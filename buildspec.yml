@@ -7,10 +7,11 @@ phases:
     commands:
       - echo "Installing dependencies..."
       - npm install
+      - echo "Installing zip utility..."
+      - yum install -y zip
   build:
     commands:
-      - echo "Building the Node.js application..."
-      - npm run build
+      - echo "No build step required; skipping..."
   post_build:
     commands:
       - echo "Packaging application into app.zip..."
@@ -19,4 +20,3 @@ artifacts:
   files:
     - app.zip
   discard-paths: yes
-
