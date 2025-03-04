@@ -1,0 +1,26 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - echo "Installing dependencies..."
+      - npm install
+  pre_build:
+    commands:
+      - echo "Running tests..."
+      - npm test
+  build:
+    commands:
+      - echo "Building the Node.js application..."
+      - npm run build
+  post_build:
+    commands:
+      - echo "Packaging application into app.zip..."
+      # Package the application files into app.zip; adjust excludes as needed.
+      - zip -r app.zip . -x "node_modules/*" -x "buildspec.yml"
+artifacts:
+  files:
+    - app.zip
+  discard-paths: yes
