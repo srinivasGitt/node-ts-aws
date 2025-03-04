@@ -5,18 +5,13 @@ phases:
     runtime-versions:
       nodejs: 18
     commands:
-      - echo "Installing dependencies..."
+      - echo Installing dependencies...
       - npm install
-      - echo "Installing zip utility..."
-      - yum install -y zip
   build:
     commands:
-      - echo "No build step required; skipping..."
-  post_build:
-    commands:
-      - echo "Packaging application into app.zip..."
-      - zip -r app.zip . -x "node_modules/*" -x "buildspec.yml"
+      - echo Build started on `date`
+      - echo Build completed on `date`
+
 artifacts:
   files:
-    - app.zip
-  discard-paths: yes
+    - '**/*'
